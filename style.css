@@ -1,0 +1,40 @@
+* {
+  border: 1px dotted black;
+}
+
+body {
+  background: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  font-size: 5vw;
+}
+
+p {
+  font-size: 10vw;
+}
+
+#timeDisplay {
+  display: flex;
+  justify-content: center;
+  max-width: 800px;
+}
+
+#buttonDisplay {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 1000px) {
+  p {
+    font-size: 100px;
+  }
+}

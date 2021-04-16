@@ -1,5 +1,6 @@
 const start = document.getElementById("start");
 const stop = document.getElementById("stop");
+const timesUp = document.getElementById("timeField");
 
 let minutes = parseInt(document.getElementById("minutes").innerText);
 let seconds = parseInt(document.getElementById("seconds").innerText);
@@ -20,6 +21,7 @@ const countdown = setInterval(function () {
   if (secs === 0 && mins == 0) {
     console.log("Time's up! Take a break");
     clearInterval(countdown);
+    timesUp.innerHTML = "<p>Time’s Up!<br>Take a Break!</p>";
     return;
   }
   if (secs > 9000) {

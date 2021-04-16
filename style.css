@@ -33,6 +33,11 @@ p {
   justify-content: center;
 }
 
+#timeField {
+  display: flex;
+  flex: row;
+}
+
 @media screen and (min-width: 1000px) {
   p {
     font-size: 100px;

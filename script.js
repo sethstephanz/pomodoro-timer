@@ -1,8 +1,11 @@
 const start = document.getElementById("start");
 const stop = document.getElementById("stop");
 
-let minutes = 10; //get from DOM as input
-let seconds = 15; //get from DOM as input
+let minutes = parseInt(document.getElementById("minutes").innerText);
+let seconds = parseInt(document.getElementById("seconds").innerText);
+
+let minutesDisplay = document.getElementById("minutes");
+let secondsDisplay = document.getElementById("seconds");
 
 //clock time to millisecond conversion
 let minutesInMS = minutes * 1000 * 60;
@@ -11,7 +14,6 @@ let totalTime = minutesInMS + secondsInMS;
 
 const countdown = setInterval(function () {
   totalTime = totalTime - 1000;
-
   let mins = Math.floor(totalTime / 60000); //gets minutes
   let secs = totalTime % 60000; //gets seconds (in 1000s)
   let secsString = secs.toString();
@@ -21,11 +23,14 @@ const countdown = setInterval(function () {
     return;
   }
   if (secs > 9000) {
-    console.log("displayTime: " + mins + ":" + secsString[0] + secsString[1]);
+    minutesDisplay.innerText = mins;
+    secondsDisplay.innerText = secsString[0] + secsString[1];
   } else if (secs <= 9000) {
-    console.log("displayTime: " + mins + ":" + "0" + secsString[0]);
+    console.log(mins + ":" + "0" + secsString[0]);
+    minutesDisplay.innerText = mins;
+    secondsDisplay.innerText = "0" + secsString[0];
   }
-}, 1000);
+}, 300);
 
 // const button = document.getElementById("btn");
 // const time = document.getElementById("time");

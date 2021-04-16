@@ -1,32 +1,72 @@
-const button = document.getElementById("btn");
-const time = document.getElementById("time");
+const start = document.getElementById("start");
 const stop = document.getElementById("stop");
-let counter = 0;
 
-inMilliseconds = time * 100000;
-let timeRemaining = inMilliseconds;
+let minutes = 10; //get from DOM as input
+let seconds = 15; //get from DOM as input
 
-let minutes = 25;
-let seconds = 00;
+//clock time to millisecond conversion
+let minutesInMS = minutes * 1000 * 60;
+let secondsInMS = seconds * 1000;
+let totalTime = minutesInMS + secondsInMS;
 
-let value = 10;
-display.innerText = value;
+const countdown = setInterval(function () {
+  totalTime = totalTime - 1000;
 
-start.addEventListener("click", () => {
-  counter++;
-  if (counter == 1) {
-    const countDown = setInterval(function () {
-      value--;
-      display.innerText = value;
-    }, 1000);
-    stop.addEventListener("click", () => {
-      counter = 0;
-      console.log("counter: " + counter);
-      clearInterval(countDown);
-    });
+  let mins = Math.floor(totalTime / 60000); //gets minutes
+  let secs = totalTime % 60000; //gets seconds (in 1000s)
+  let secsString = secs.toString();
+  if (secs === 0 && mins == 0) {
+    console.log("Time's up! Take a break");
+    clearInterval(countdown);
+    return;
   }
-  console.log("counter: " + counter);
-});
+  if (secs > 9000) {
+    console.log("displayTime: " + mins + ":" + secsString[0] + secsString[1]);
+  } else if (secs <= 9000) {
+    console.log("displayTime: " + mins + ":" + "0" + secsString[0]);
+  }
+}, 1000);
+
+// const button = document.getElementById("btn");
+// const time = document.getElementById("time");
+// const stop = document.getElementById("stop");
+// let counter = 0;
+
+// let minutes = 25;
+// let seconds = 00;
+
+// console.log("timeDisplay: " + timeDisplay);
+// let totalTime = minutes * 60000 + seconds * 1000;
+// console.log("totalTime: " + totalTime);
+
+// let concat = totalTime;
+
+// button.addEventListener("click", () => {
+//   counter++;
+
+//   let mins = Math.floor(totalTime * 60000); //gets minutes
+//   console.log("mins: " + mins);
+//   let secs = totalTime % 60000; //gets seconds (in 1000s)
+//   console.log("secs: " + secs);
+//   let secsString = secs.toString();
+
+//   totalTime = totalTime - 1000;
+
+//   if (counter == 1) {
+//     const countDown = setInterval(function () {
+//       totalTime = totalTime - 1000;
+//       console.log("totalTime: " + totalTime);
+//       timeDisplay.innerHTML = mins + ":" + secsString[0] + secsString[1];
+//       // timeDisplay.innerText = totalTime;
+//     }, 1000);
+//     stop.addEventListener("click", () => {
+//       counter = 0;
+//       console.log("counter: " + counter);
+//       clearInterval(countDown);
+//     });
+//   }
+//   console.log("counter: " + counter);
+// });
 
 // button.addEventListener("click", () => {
 //   counter++;

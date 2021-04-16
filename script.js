@@ -30,7 +30,7 @@ const countdown = setInterval(function () {
     minutesDisplay.innerText = mins;
     secondsDisplay.innerText = "0" + secsString[0];
   }
-}, 300);
+}, 1000);
 
 // const button = document.getElementById("btn");
 // const time = document.getElementById("time");
